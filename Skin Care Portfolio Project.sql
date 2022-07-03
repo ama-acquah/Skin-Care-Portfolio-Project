@@ -33,7 +33,7 @@ SELECT Brand,Name, Price as Most_Expensive_Item_From_Brand, Rank
  ) X WHERE Pickup = 'Take' ORDER BY Brand
  -- Most expensive product from each brand 
 
- SELECT Brand,Name, Price as Most_Expensive_Item_From_Brand, Rank
+ SELECT Brand,Name, Price as Least_Expensive_Item_From_Brand, Rank
  FROM 
  (
    SELECT Brand, Name, Price, Rank, CASE WHEN Price = MIN(Price) OVER(PARTITION BY Brand ORDER BY (Select 1)) THEN 'Take' ELSE 'Leave' END AS Pickup 
