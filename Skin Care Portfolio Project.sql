@@ -12,18 +12,19 @@ SELECT Label, Brand, Name, Price
  FROM SkinCare
     WHERE Price <= 50
     ORDER BY Brand,Price
--- Considered More affordable Products 
+-- Products under $50.00 (Considered more affordable products) 
 
 SELECT Label, Brand, Name, Price
  FROM SkinCare
     WHERE Price >=75
     ORDER BY Brand, Price 
--- Considered more expensive products
+-- Products over $75.00 (Considered more expensive products) 
 
 SELECT Brand, MAX(Price) as Most_Expensive_Product_From_Brand
  FROM SkinCare
     GROUP BY Brand
     ORDER BY Brand
+-- Find the highest price from each brand 
 
 SELECT Brand,Name, Price as Most_Expensive_Item_From_Brand, Rank
  FROM (
@@ -31,7 +32,7 @@ SELECT Brand,Name, Price as Most_Expensive_Item_From_Brand, Rank
    FROM SkinCare
 
  ) X WHERE Pickup = 'Take' ORDER BY Brand
- -- Most expensive product from each brand 
+ -- Most expensive product from each brand showing the rank of each product 
 
  SELECT Brand,Name, Price as Least_Expensive_Item_From_Brand, Rank
  FROM 
@@ -40,7 +41,7 @@ SELECT Brand,Name, Price as Most_Expensive_Item_From_Brand, Rank
    FROM SkinCare
  ) 
  X WHERE Pickup = 'Take' ORDER BY Brand
- -- Least expensive product from each brand 
+ -- Least expensive product from each brand showing the rank of each product 
 
 SELECT TOP 100 Brand, Name, Ingredients, Combination as Combination_Skin_Type, Dry as Dry_Skin_Type, Normal as Normal_Skin_Type, Oily as Oily_Skin_Type, Sensitive as Sensitive_Skin_Care, Price, Rank
  FROM (
@@ -48,5 +49,5 @@ SELECT TOP 100 Brand, Name, Ingredients, Combination as Combination_Skin_Type, D
     FROM SkinCare
  ) 
  X WHERE Pickup = 'Take' ORDER BY Price DESC 
- -- Top 100 most expensive products and which skin type they accomitdate 
+ -- Top 100 most expensive products and which skin type they accommodate
  
